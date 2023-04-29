@@ -49,7 +49,8 @@ impl Client {
             Some(ws) => ws,
             None => {
                 return Err(Error::RustError(
-                    "Failed to upgrade to websocket".to_string(),
+                    format!("Failed to upgrade to websocket code: {}", res.status_code())
+                        .to_string(),
                 ))
             }
         };
